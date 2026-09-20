@@ -8,26 +8,26 @@ const projects = [
     number: '01',
     title: 'GB Oliphant Services Ltd', 
     category: 'Corporate Website', 
-    desc: 'A comprehensive corporate platform showcasing services, company profile, and client portals.', 
-    bg: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+    desc: 'A comprehensive corporate platform showcasing services, company profile, and client portals with modern professional design.', 
+    bg: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&h=800&fit=crop',
     tags: ['React', 'Node.js', 'PostgreSQL'] 
   },
   { 
     id: 2, 
     number: '02',
     title: 'Aurelia Grand Hotel', 
-    category: 'Hospitality', 
-    desc: 'An elegant booking and showcase website for a luxury hotel with reservation systems.', 
-    bg: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+    category: 'Hospitality & Booking', 
+    desc: 'Elegant hotel booking platform with room tours, reservation systems, and event management.', 
+    bg: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&h=800&fit=crop',
     tags: ['Next.js', 'Stripe', 'Tailwind'] 
   },
   { 
     id: 3, 
     number: '03',
-    title: 'Pinpoint Kitchen', 
+    title: 'Pinpoint Kitchen & Cravehub', 
     category: 'Food & E-commerce', 
-    desc: 'A dynamic food ordering platform with real-time order tracking and menu management.', 
-    bg: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+    desc: 'Dynamic food ordering platform with real-time order tracking and menu management system.', 
+    bg: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200&h=800&fit=crop',
     tags: ['React Native', 'Firebase'] 
   },
   { 
@@ -35,17 +35,17 @@ const projects = [
     number: '04',
     title: 'Meridian FX', 
     category: 'FinTech Dashboard', 
-    desc: 'High-performance forex trading dashboard with real-time data visualization.', 
-    bg: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
+    desc: 'High-performance forex trading dashboard with real-time data visualization and analytics.', 
+    bg: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1200&h=800&fit=crop',
     tags: ['Vue.js', 'D3.js', 'Python'] 
   },
   { 
     id: 5, 
     number: '05',
     title: 'Nexus Digital Agency', 
-    category: 'Agency Portfolio', 
-    desc: 'Creative agency portfolio with smooth animations and case studies.', 
-    bg: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
+    category: 'Creative Agency', 
+    desc: 'Creative agency portfolio featuring smooth animations, case studies, and client showcase.', 
+    bg: 'https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=1200&h=800&fit=crop',
     tags: ['Framer Motion', 'React'] 
   },
 ];
@@ -77,25 +77,37 @@ export default function Portfolio() {
                 key={project.id}
                 className={`stacked-card-modern ${isVisible ? 'visible' : 'hidden'} ${isActive ? 'active' : ''}`}
                 style={{
-                  transform: `translateY(${offset * -60}px) scale(${1 - Math.abs(offset) * 0.05})`,
+                  transform: `translateY(${offset * -80}px) scale(${1 - Math.abs(offset) * 0.08})`,
                   zIndex: 10 - Math.abs(offset),
                   opacity: isVisible ? 1 - Math.abs(offset) * 0.3 : 0,
-                  background: project.bg,
                 }}
                 onClick={() => setActiveIndex(index)}
               >
+                <div className="card-image-wrapper">
+                  <img src={project.bg} alt={project.title} className="card-background" />
+                  <div className="card-overlay"></div>
+                </div>
                 <div className="card-content-modern">
-                  <div className="card-number-modern">{project.number}</div>
-                  <div className="card-category-modern">{project.category}</div>
+                  <div className="card-top">
+                    <div className="card-number-modern">{project.number}</div>
+                    <div className="card-category-modern">{project.category}</div>
+                  </div>
                   <h3 className="card-title-modern">{project.title}</h3>
                   <p className="card-desc-modern">{project.desc}</p>
                   {isActive && (
-                    <button 
-                      className="card-cta-modern"
-                      onClick={(e) => { e.stopPropagation(); setSelectedProject(project); }}
-                    >
-                      VIEW CASE STUDY <ArrowRight size={16} />
-                    </button>
+                    <div className="card-footer">
+                      <div className="card-tags">
+                        {project.tags.map(tag => (
+                          <span key={tag} className="mini-tag">{tag}</span>
+                        ))}
+                      </div>
+                      <button 
+                        className="card-cta-modern"
+                        onClick={(e) => { e.stopPropagation(); setSelectedProject(project); }}
+                      >
+                        VIEW CASE STUDY <ArrowRight size={16} />
+                      </button>
+                    </div>
                   )}
                 </div>
               </div>
@@ -130,6 +142,9 @@ export default function Portfolio() {
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <button className="modal-close" onClick={() => setSelectedProject(null)}>×</button>
             <div className="modal-body">
+              <div className="modal-image-large">
+                <img src={selectedProject.bg} alt={selectedProject.title} />
+              </div>
               <span className="section-tag" style={{ marginBottom: '1rem', display: 'inline-block' }}>
                 {selectedProject.category}
               </span>
