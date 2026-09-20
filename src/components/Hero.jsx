@@ -1,5 +1,5 @@
 import { useScrollReveal } from '../hooks/useScrollReveal';
-import profileImg from '../assets/profileimage.jpg';
+import profileImg from '../assets/profileimage.jpeg';
 
 export default function Hero() {
   const ref = useScrollReveal();
