@@ -38,7 +38,7 @@ export default function Contact() {
 
     // 2. Send the data to the backend
     try {
-      const response = await fetch('http://localhost:5000/api/send-email', {
+      const response = await fetch('http://https://devel-portfolio-backend.onrender.com/api/send-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
