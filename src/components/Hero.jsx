@@ -12,7 +12,21 @@ export default function Hero() {
 
   return (
     <section id="home" className="hero" ref={ref}>
-      <div className="hero-bg-gradient"></div>
+      {/* Background Video */}
+      <div className="hero-video-container">
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline
+          className="hero-video"
+          poster="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1920&h=1080&fit=crop"
+        >
+          <source src="https://videos.pexels.com/video-files/3195974/3195974-uhd_2560_1440_30fps.mp4" type="video/mp4" />
+          <source src="https://videos.pexels.com/video-files/3195974/3195974-hd_1920_1080_30fps.mp4" type="video/mp4" />
+        </video>
+        <div className="hero-video-overlay"></div>
+      </div>
       
       <div className="hero-container">
         <div className={`hero-content ${loaded ? 'loaded' : ''}`}>
@@ -75,20 +89,6 @@ export default function Hero() {
               className="hero-image"
             />
             <div className="hero-image-overlay"></div>
-            
-            {/* Floating badges */}
-            <div className="floating-badge badge-1">
-              <span className="badge-icon">⚡</span>
-              <span>Fast</span>
-            </div>
-            <div className="floating-badge badge-2">
-              <span className="badge-icon">🎨</span>
-              <span>Creative</span>
-            </div>
-            <div className="floating-badge badge-3">
-              <span className="badge-icon">💻</span>
-              <span>Modern</span>
-            </div>
           </div>
         </div>
       </div>
