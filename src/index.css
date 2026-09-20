@@ -3458,3 +3458,252 @@ section {
   height: 100%;
   object-fit: cover;
 }
+/* =========================================
+   EXQUISITE PORTFOLIO SHOWCASE
+   ========================================= */
+.portfolio-showcase {
+  background: #050505;
+  padding: 8rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.showcase-header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.showcase-title {
+  font-size: 4rem;
+  font-weight: 800;
+  color: white;
+  line-height: 1.1;
+  margin-top: 1rem;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.showcase-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+/* Preview Image Area */
+.showcase-preview {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/3;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #111;
+  border: 1px solid rgba(255,255,255,0.05);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+}
+
+.preview-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transform: scale(1.1);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.preview-image.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.preview-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.preview-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 3rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.95), transparent);
+  color: white;
+}
+
+.preview-category {
+  font-size: 0.85rem;
+  color: #3b82f6;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.preview-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: 0.5rem 0 1rem;
+}
+
+.preview-tags {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.preview-tags .tag {
+  background: rgba(255,255,255,0.1);
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  backdrop-filter: blur(10px);
+}
+
+.view-project-btn {
+  background: white;
+  color: black;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.view-project-btn:hover {
+  transform: scale(1.05);
+}
+
+/* Interactive List */
+.showcase-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.showcase-item {
+  display: flex;
+  align-items: center;
+  padding: 2rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  cursor: pointer;
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+.showcase-item:first-child {
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.showcase-item:hover, .showcase-item.active {
+  padding-left: 1.5rem;
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.item-number {
+  font-size: 1rem;
+  color: #666;
+  font-weight: 600;
+  margin-right: 2rem;
+  width: 30px;
+}
+
+.item-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #888;
+  flex: 1;
+  transition: color 0.4s ease;
+}
+
+.showcase-item:hover .item-title, 
+.showcase-item.active .item-title {
+  color: white;
+}
+
+.item-category {
+  font-size: 0.9rem;
+  color: #666;
+  margin-right: 2rem;
+  transition: color 0.4s ease;
+}
+
+.showcase-item:hover .item-category,
+.showcase-item.active .item-category {
+  color: #3b82f6;
+}
+
+.item-arrow {
+  font-size: 1.5rem;
+  color: #666;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.4s ease;
+}
+
+.showcase-item:hover .item-arrow,
+.showcase-item.active .item-arrow {
+  opacity: 1;
+  transform: translateX(0);
+  color: white;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .showcase-container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  
+  .showcase-title {
+    font-size: 3rem;
+  }
+  
+  .showcase-preview {
+    order: -1; /* Image on top on mobile */
+    aspect-ratio: 16/9;
+  }
+  
+  .preview-title {
+    font-size: 1.8rem;
+  }
+  
+  .item-title {
+    font-size: 1.4rem;
+  }
+  
+  .item-category {
+    display: none; /* Hide category on mobile to save space */
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio-showcase {
+    padding: 5rem 1rem;
+  }
+  
+  .showcase-title {
+    font-size: 2.2rem;
+  }
+  
+  .preview-overlay {
+    padding: 1.5rem;
+  }
+  
+  .preview-title {
+    font-size: 1.4rem;
+  }
+  
+  .showcase-item {
+    padding: 1.5rem 0;
+  }
+}
