@@ -2,43 +2,41 @@ import { useState, useEffect } from 'react';
 
 export default function LoadingScreen({ onComplete }) {
   const [progress, setProgress] = useState(0);
+  const [fadeOut, setFadeOut] = useState(false);
 
   useEffect(() => {
-    const duration = 15000; // 15 seconds
-    const interval = 50;
-    const step = 100 / (duration / interval);
-    
     const timer = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
           clearInterval(timer);
-          setTimeout(onComplete, 500);
+          setTimeout(() => {
+            setFadeOut(true);
+            setTimeout(onComplete, 500);
+          }, 500);
           return 100;
         }
-        return prev + step;
+        return prev + 2;
       });
-    }, interval);
+    }, 30);
 
     return () => clearInterval(timer);
   }, [onComplete]);
 
   return (
-    <div className="loading-screen">
+    <div className={`loading-screen ${fadeOut ? 'fade-out' : ''}`}>
       <div className="loading-content">
-        <div className="loading-logo-wrapper">
-          <div className="loading-glow"></div>
-          <h1 className="loading-logo">DEVEL</h1>
+        <div className="loading-logo">
+          <span className="logo-letter d">D</span>
+          <span className="logo-letter e">E</span>
+          <span className="logo-letter v">V</span>
+          <span className="logo-letter apostrophe">'</span>
+          <span className="logo-letter e2">E</span>
+          <span className="logo-letter l">L</span>
         </div>
-        <p className="loading-text">Initializing Experience</p>
         <div className="loading-bar-container">
           <div className="loading-bar" style={{ width: `${progress}%` }}></div>
         </div>
-        <div className="loading-percentage">{Math.floor(progress)}%</div>
-        <div className="loading-dots">
-          <div className="dot"></div>
-          <div className="dot"></div>
-          <div className="dot"></div>
-        </div>
+        <p className="loading-text">Loading Experience...</p>
       </div>
     </div>
   );
