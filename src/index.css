@@ -3707,3 +3707,54 @@ section {
     padding: 1.5rem 0;
   }
 }
+/* =========================================
+   LIGHT THEME (BLUE)
+   ========================================= */
+body.light-mode {
+  --bg-primary: #f0f4f8; /* Light blue-gray background */
+  --bg-secondary: #ffffff;
+  --bg-card: rgba(255, 255, 255, 0.9);
+  --text-primary: #0f172a; /* Dark slate text */
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  --border-color: rgba(15, 23, 42, 0.1);
+  --accent-glow: rgba(37, 99, 235, 0.2);
+}
+
+body.light-mode .hero {
+  background: linear-gradient(135deg, #e0f2fe 0%, #f0f4f8 100%);
+}
+
+body.light-mode .stacked-card-modern {
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+body.light-mode .card-overlay {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.6) 0%, rgba(15, 23, 42, 0.3) 100%);
+}
+
+/* Theme Toggle Button */
+.theme-toggle-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-left: 1rem;
+}
+
+body.light-mode .theme-toggle-btn {
+  background: rgba(15, 23, 42, 0.05);
+}
+
+.theme-toggle-btn:hover {
+  background: var(--accent-primary);
+  color: white;
+  transform: rotate(15deg);
+}

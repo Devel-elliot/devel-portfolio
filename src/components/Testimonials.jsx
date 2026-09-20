@@ -3,9 +3,9 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
 import { ChevronLeft, ChevronRight } from './Icons';
 
 const testimonials = [
-  { id: 1, text: "An exceptional developer who truly understands both the technical and design aspects of building a product. Delivered beyond our expectations.", name: "Sarah Johnson", role: "CEO, TechCorp" },
-  { id: 2, text: "The attention to detail and commitment to quality is unmatched. Our platform's performance improved drastically after the redesign.", name: "Michael Chen", role: "Product Manager, Nexus" },
-  { id: 3, text: "Professional, communicative, and highly skilled. The project was delivered on time and the code quality was pristine.", name: "Emily Rodriguez", role: "Founder, StartUp Hub" },
+  { id: 1, text: "An exceptional developer who truly understands both the technical and design aspects. The project was delivered ahead of schedule and the quality was top-notch.", name: "Chinedu Okafor", role: "CEO, TechCorp" },
+  { id: 2, text: "The attention to detail and commitment to quality is unmatched. Our platform's performance improved drastically after the redesign. Highly recommended!", name: "Adebayo Adeleke", role: "Product Manager, Nexus" },
+  { id: 3, text: "Professional, communicative, and highly skilled. He understood our vision perfectly and translated it into a digital reality that our customers love.", name: "Tega Avwereta", role: "Founder, StartUp Hub" },
 ];
 
 export default function Testimonials() {
