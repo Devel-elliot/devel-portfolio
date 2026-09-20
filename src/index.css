@@ -2936,3 +2936,94 @@ section {
     font-size: 1.25rem;
   }
 }
+
+@media (max-width: 992px) {
+  .portfolio-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+  
+  .portfolio-heading {
+    font-size: 2rem;
+    text-align: center;
+    max-width: 100%;
+  }
+  
+  .stacked-cards {
+    height: auto;
+    min-height: 600px;
+  }
+  
+  .stacked-card {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    grid-template-columns: 1fr !important;
+    transform: none !important;
+    opacity: 1 !important;
+    margin-bottom: 2rem;
+    display: none;
+  }
+  
+  .stacked-card.visible {
+    display: grid !important;
+  }
+  
+  .card-right {
+    height: 300px;
+  }
+  
+  .card-left {
+    padding: 2rem;
+  }
+  
+  .card-title {
+    font-size: 1.8rem;
+  }
+  
+  .card-controls {
+    flex-direction: column;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .portfolio-heading {
+    font-size: 1.5rem;
+  }
+  
+  .stacked-cards {
+    min-height: 550px;
+  }
+  
+  .card-right {
+    height: 250px;
+  }
+  
+  .card-left {
+    padding: 1.5rem;
+  }
+  
+  .card-title {
+    font-size: 1.5rem;
+  }
+  
+  .card-desc {
+    font-size: 0.95rem;
+  }
+  
+  .card-cta {
+    font-size: 0.85rem;
+  }
+  
+  .modal-content {
+    max-width: 95%;
+    padding: 1.5rem;
+  }
+  
+  .modal-body h2 {
+    font-size: 1.8rem !important;
+  }
+}
