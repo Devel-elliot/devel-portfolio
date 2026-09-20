@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <!-- Dark background matching your site -->
+  <rect width="32" height="32" rx="8" fill="#0f172a"/>
+  
+  <!-- Left Bracket -->
+  <path d="M13 10L7 16L13 22" stroke="url(#dev-gradient)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Right Bracket -->
+  <path d="M19 10L25 16L19 22" stroke="url(#dev-gradient)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Center Slash -->
+  <path d="M18 9L14 23" stroke="url(#dev-gradient)" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- Your Site's Gradient -->
+  <defs>
+    <linearGradient id="dev-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#8b5cf6" />
+    </linearGradient>
+  </defs>
+</svg>
