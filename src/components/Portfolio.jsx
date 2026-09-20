@@ -7,46 +7,46 @@ const projects = [
     id: 1, 
     number: '01',
     title: 'GB Oliphant Services Ltd', 
-    category: 'Corporate • Web Design', 
-    desc: 'A comprehensive corporate platform showcasing services, company profile, and client portals with a modern, professional aesthetic that builds trust and credibility.', 
-    bg: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&h=800&fit=crop',
+    category: 'Corporate Website', 
+    desc: 'A comprehensive corporate platform showcasing services, company profile, and client portals.', 
+    bg: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
     tags: ['React', 'Node.js', 'PostgreSQL'] 
   },
   { 
     id: 2, 
     number: '02',
     title: 'Aurelia Grand Hotel', 
-    category: 'Hospitality • Booking', 
-    desc: 'An elegant booking and showcase website for a luxury hotel, featuring room tours, reservation systems, and event management with seamless user experience.', 
-    bg: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&h=800&fit=crop',
+    category: 'Hospitality', 
+    desc: 'An elegant booking and showcase website for a luxury hotel with reservation systems.', 
+    bg: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
     tags: ['Next.js', 'Stripe', 'Tailwind'] 
   },
   { 
     id: 3, 
     number: '03',
-    title: 'Pinpoint Kitchen & Cravehub', 
-    category: 'Food • E-commerce', 
-    desc: 'A dynamic food ordering and restaurant management platform with real-time order tracking, menu management, and customer reviews for modern dining.', 
-    bg: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200&h=800&fit=crop',
-    tags: ['React Native', 'Firebase', 'Redux'] 
+    title: 'Pinpoint Kitchen', 
+    category: 'Food & E-commerce', 
+    desc: 'A dynamic food ordering platform with real-time order tracking and menu management.', 
+    bg: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+    tags: ['React Native', 'Firebase'] 
   },
   { 
     id: 4, 
     number: '04',
     title: 'Meridian FX', 
-    category: 'FinTech • Dashboard', 
-    desc: 'A high-performance forex trading dashboard with real-time data visualization, portfolio tracking, and secure transaction processing for professional traders.', 
-    bg: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1200&h=800&fit=crop',
+    category: 'FinTech Dashboard', 
+    desc: 'High-performance forex trading dashboard with real-time data visualization.', 
+    bg: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
     tags: ['Vue.js', 'D3.js', 'Python'] 
   },
   { 
     id: 5, 
     number: '05',
     title: 'Nexus Digital Agency', 
-    category: 'Agency • Portfolio', 
-    desc: 'A creative agency portfolio featuring smooth animations, case studies, and a robust client inquiry system that converts visitors into customers.', 
-    bg: 'https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=1200&h=800&fit=crop',
-    tags: ['Framer Motion', 'React', 'Sanity'] 
+    category: 'Agency Portfolio', 
+    desc: 'Creative agency portfolio with smooth animations and case studies.', 
+    bg: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
+    tags: ['Framer Motion', 'React'] 
   },
 ];
 
@@ -66,36 +66,37 @@ export default function Portfolio() {
       </div>
 
       <div className="stacked-cards-container reveal">
-        <div className="stacked-cards">
+        <div className="stacked-cards-modern">
           {projects.map((project, index) => {
             const offset = index - activeIndex;
             const isVisible = Math.abs(offset) <= 2;
+            const isActive = offset === 0;
             
             return (
               <div
                 key={project.id}
-                className={`stacked-card ${isVisible ? 'visible' : 'hidden'}`}
+                className={`stacked-card-modern ${isVisible ? 'visible' : 'hidden'} ${isActive ? 'active' : ''}`}
                 style={{
-                  transform: `translateX(${offset * 40}px) translateY(${Math.abs(offset) * -20}px) rotate(${offset * -2}deg)`,
+                  transform: `translateY(${offset * -60}px) scale(${1 - Math.abs(offset) * 0.05})`,
                   zIndex: 10 - Math.abs(offset),
-                  opacity: isVisible ? 1 - Math.abs(offset) * 0.25 : 0,
+                  opacity: isVisible ? 1 - Math.abs(offset) * 0.3 : 0,
+                  background: project.bg,
                 }}
                 onClick={() => setActiveIndex(index)}
               >
-                <div className="card-left">
-                  <div className="card-number">{project.number}</div>
-                  <div className="card-category">{project.category}</div>
-                  <h3 className="card-title">{project.title}</h3>
-                  <p className="card-desc">{project.desc}</p>
-                  <button 
-                    className="card-cta"
-                    onClick={(e) => { e.stopPropagation(); setSelectedProject(project); }}
-                  >
-                    VIEW CASE STUDY <ArrowRight size={16} />
-                  </button>
-                </div>
-                <div className="card-right">
-                  <img src={project.bg} alt={project.title} />
+                <div className="card-content-modern">
+                  <div className="card-number-modern">{project.number}</div>
+                  <div className="card-category-modern">{project.category}</div>
+                  <h3 className="card-title-modern">{project.title}</h3>
+                  <p className="card-desc-modern">{project.desc}</p>
+                  {isActive && (
+                    <button 
+                      className="card-cta-modern"
+                      onClick={(e) => { e.stopPropagation(); setSelectedProject(project); }}
+                    >
+                      VIEW CASE STUDY <ArrowRight size={16} />
+                    </button>
+                  )}
                 </div>
               </div>
             );
@@ -129,9 +130,6 @@ export default function Portfolio() {
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <button className="modal-close" onClick={() => setSelectedProject(null)}>×</button>
             <div className="modal-body">
-              <div className="modal-image">
-                <img src={selectedProject.bg} alt={selectedProject.title} />
-              </div>
               <span className="section-tag" style={{ marginBottom: '1rem', display: 'inline-block' }}>
                 {selectedProject.category}
               </span>
