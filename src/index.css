@@ -4733,9 +4733,7 @@ body.light-mode .scroll-wheel {
   transform: translateY(0);
 }
 
-/* =========================================
-   3D FLIP PROFILE IMAGE & SOUND WAVE
-   ========================================= */
+
 .hero-image-flipper {
   width: 400px;
   height: 400px;
@@ -4751,7 +4749,7 @@ body.light-mode .scroll-wheel {
   transform-style: preserve-3d;
 }
 
-/* Flip on hover */
+
 .hero-image-flipper:hover .hero-image-inner {
   transform: rotateY(180deg);
 }
@@ -4772,12 +4770,12 @@ body.light-mode .scroll-wheel {
   object-fit: cover;
 }
 
-/* The Back Image */
+
 .hero-image-face.back {
   transform: rotateY(180deg);
 }
 
-/* Sound Wave Effect (Behind the front image) */
+
 .sound-wave {
   position: absolute;
   top: 50%; left: 50%;
@@ -4790,7 +4788,7 @@ body.light-mode .scroll-wheel {
   z-index: -1;
 }
 
-/* Animate the sound wave on hover */
+
 .hero-image-flipper:hover .sound-wave {
   opacity: 1;
   animation: soundWave 1.5s ease-out infinite;
@@ -4817,16 +4815,14 @@ body.light-mode .scroll-wheel {
   100% { width: 140%; height: 140%; opacity: 0; }
 }
 
-/* Mobile adjustment for flip image */
+
 @media (max-width: 768px) {
   .hero-image-flipper {
     width: 300px;
     height: 300px;
   }
 }
-/* =========================================
-   LOADING SCREEN - LETTERS ON TOP
-   ========================================= */
+
 .loading-container {
   display: flex;
   flex-direction: column;
@@ -4870,9 +4866,6 @@ body.light-mode .scroll-wheel {
   transition: width 0.05s linear;
 }
 
-/* =========================================
-   NAVBAR - HIDE LOGO ON SCROLL
-   ========================================= */
 .floating-nav {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -4891,9 +4884,7 @@ body.light-mode .scroll-wheel {
   transition: opacity 0.3s ease;
 }
 
-/* =========================================
-   HERO - ROTATING BACKGROUND IMAGES
-   ========================================= */
+
 .hero-bg-images {
   position: absolute;
   top: 0;
@@ -4922,13 +4913,13 @@ body.light-mode .scroll-wheel {
   transform: scale(1.05);
 }
 
-/* Remove old video styles if not needed elsewhere */
+
 .hero-video-container,
 .hero-video {
   display: none;
 }
 
-/* Keep the overlay */
+
 .hero-video-overlay {
   position: absolute;
   top: 0;
@@ -4943,4 +4934,15 @@ body.light-mode .hero-video-overlay {
   background: linear-gradient(135deg, rgba(240, 244, 248, 0.9) 0%, rgba(240, 244, 248, 0.8) 100%);
 }
 
-/* Rest of hero styles remain the same */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px; 
+}
+
+.nav-logo.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
