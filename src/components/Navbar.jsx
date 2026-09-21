@@ -5,7 +5,6 @@ export default function Navbar() {
   const [activeSection, setActiveSection] = useState('home');
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(true);
-  const [scrolled, setScrolled] = useState(false);
 
   const navItems = [
     { id: 'home', label: 'Home', icon: Home },
@@ -18,8 +17,6 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 100);
-      
       const sections = navItems.map(item => document.getElementById(item.id));
       const scrollPos = window.scrollY + 200;
       sections.forEach(section => {
@@ -49,8 +46,8 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className={`floating-nav ${scrolled ? 'scrolled' : ''}`}>
-        <div className={`nav-logo ${scrolled ? 'hidden' : ''}`}>
+      <nav className="floating-nav">
+        <div className="nav-logo">
           <span className="logo-d">D</span>
           <span className="logo-e">E</span>
           <span className="logo-v">V</span>
@@ -58,7 +55,7 @@ export default function Navbar() {
           <span className="logo-e2">E</span>
           <span className="logo-l">L</span>
         </div>
-        
+
         <div className="nav-pill">
           {navItems.map((item) => {
             const Icon = item.icon;

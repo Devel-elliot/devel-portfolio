@@ -1,4 +1,4 @@
-import { useState  } from 'react';
+import { useState } from 'react';
 
 export default function LoadingScreen({ onComplete }) {
   const [stage, setStage] = useState('play');
@@ -6,11 +6,11 @@ export default function LoadingScreen({ onComplete }) {
 
   const handlePlay = () => {
     setStage('loading');
-    const duration = 5000;
+    const duration = 5000; // 5 seconds
     const interval = 50;
     const step = 100 / (duration / interval);
     let current = 0;
-    
+
     const timer = setInterval(() => {
       current += step;
       setProgress(current);
@@ -35,22 +35,17 @@ export default function LoadingScreen({ onComplete }) {
           </svg>
         </button>
       )}
-      
+
       {stage === 'loading' && (
-        <div className="loading-container">
-          <div className="loading-letters">
-            {['D', 'E', 'V', "'", 'E', 'L'].map((letter, index) => (
-              <span 
-                key={index} 
-                className={`letter ${progress > (index + 1) * 15 ? 'visible' : ''}`}
-              >
-                {letter}
-              </span>
-            ))}
-          </div>
-          <div className="loading-bar-track">
-            <div className="loading-bar-fill" style={{ width: `${progress}%` }}></div>
-          </div>
+        <div className="loading-letters-only">
+          {['D', 'E', 'V', "'", 'E', 'L'].map((letter, index) => (
+            <span
+              key={index}
+              className={`letter ${progress > (index + 1) * 15 ? 'visible' : ''}`}
+            >
+              {letter}
+            </span>
+          ))}
         </div>
       )}
     </div>

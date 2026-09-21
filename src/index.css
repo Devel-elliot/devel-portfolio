@@ -4946,3 +4946,53 @@ body.light-mode .hero-video-overlay {
   pointer-events: none;
   transition: opacity 0.3s ease;
 }
+/* =========================================
+   CLEAN LOADING SCREEN (NO LINE)
+   ========================================= */
+.loading-screen {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: #0f172a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease;
+}
+
+.play-btn {
+  background: transparent;
+  border: 2px solid white;
+  border-radius: 50%;
+  width: 100px; height: 100px;
+  display: flex; align-items: center; justify-content: center;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.play-btn:hover {
+  background: white;
+  color: #0f172a;
+  transform: scale(1.1);
+}
+
+.loading-letters-only {
+  display: flex;
+  gap: 8px;
+  font-size: 4rem;
+  font-weight: 900;
+  color: white;
+  letter-spacing: 10px;
+}
+
+.loading-letters-only .letter {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+}
+
+.loading-letters-only .letter.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
