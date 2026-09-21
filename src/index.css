@@ -4660,3 +4660,167 @@ body.light-mode .scroll-wheel {
     width: 100%;
   }
 }
+/* =========================================
+   YOUTUBE STYLE LOADING SCREEN
+   ========================================= */
+.loading-screen {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: #0f172a; /* Dark background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease;
+}
+
+.play-btn {
+  background: transparent;
+  border: 2px solid white;
+  border-radius: 50%;
+  width: 100px; height: 100px;
+  display: flex; align-items: center; justify-content: center;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.play-btn:hover {
+  background: white;
+  color: #0f172a;
+  transform: scale(1.1);
+}
+
+.loading-bar-track {
+  width: 80%;
+  max-width: 600px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  position: relative;
+  overflow: visible;
+}
+
+.loading-bar-fill {
+  height: 100%;
+  background: white;
+  border-radius: 2px;
+  transition: width 0.05s linear;
+}
+
+.loading-letters {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: white;
+  letter-spacing: 5px;
+}
+
+.loading-letters .letter {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+
+.loading-letters .letter.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================================
+   3D FLIP PROFILE IMAGE & SOUND WAVE
+   ========================================= */
+.hero-image-flipper {
+  width: 400px;
+  height: 400px;
+  perspective: 1000px; /* Gives the 3D depth */
+  margin: 0 auto;
+}
+
+.hero-image-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-style: preserve-3d;
+}
+
+/* Flip on hover */
+.hero-image-flipper:hover .hero-image-inner {
+  transform: rotateY(180deg);
+}
+
+.hero-image-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden; /* Hides the back when facing away */
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+
+.hero-image-face img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* The Back Image */
+.hero-image-face.back {
+  transform: rotateY(180deg);
+}
+
+/* Sound Wave Effect (Behind the front image) */
+.sound-wave {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%; height: 100%;
+  border-radius: 50%;
+  border: 2px solid rgba(59, 130, 246, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+/* Animate the sound wave on hover */
+.hero-image-flipper:hover .sound-wave {
+  opacity: 1;
+  animation: soundWave 1.5s ease-out infinite;
+}
+
+.hero-image-flipper:hover .sound-wave::before,
+.hero-image-flipper:hover .sound-wave::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%; height: 100%;
+  border-radius: 50%;
+  border: 2px solid rgba(139, 92, 246, 0.5);
+  animation: soundWave 1.5s ease-out infinite;
+}
+
+.hero-image-flipper:hover .sound-wave::after {
+  animation-delay: 0.5s;
+}
+
+@keyframes soundWave {
+  0% { width: 100%; height: 100%; opacity: 1; }
+  100% { width: 140%; height: 140%; opacity: 0; }
+}
+
+/* Mobile adjustment for flip image */
+@media (max-width: 768px) {
+  .hero-image-flipper {
+    width: 300px;
+    height: 300px;
+  }
+}
