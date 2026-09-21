@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react';
-import { Home, User, Briefcase, Folder, Code, Mail, Menu, X } from './Icons';
+// ... (keep all the imports and navItems the same)
 
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState('home');
@@ -18,7 +17,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY > 100); // Hide logo after scrolling 100px
       
       const sections = navItems.map(item => document.getElementById(item.id));
       const scrollPos = window.scrollY + 200;
@@ -34,30 +33,22 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
-    document.body.classList.toggle('light-mode');
-  };
-
-  const scrollTo = (id) => {
-    const el = document.getElementById(id);
-    if (el) {
-      window.scrollTo({ top: el.offsetTop - 100, behavior: 'smooth' });
-      setIsMobileOpen(false);
-    }
-  };
+  // ... (keep toggleTheme and scrollTo functions the same)
 
   return (
     <>
       <nav className={`floating-nav ${scrolled ? 'scrolled' : ''}`}>
-        <div className="nav-logo">
-          <span className="logo-d">D</span>
-          <span className="logo-e">E</span>
-          <span className="logo-v">V</span>
-          <span className="logo-apostrophe">'</span>
-          <span className="logo-e2">E</span>
-          <span className="logo-l">L</span>
-        </div>
+        {/* Logo only shows when NOT scrolled */}
+        {!scrolled && (
+          <div className="nav-logo">
+            <span className="logo-d">D</span>
+            <span className="logo-e">E</span>
+            <span className="logo-v">V</span>
+            <span className="logo-apostrophe">'</span>
+            <span className="logo-e2">E</span>
+            <span className="logo-l">L</span>
+          </div>
+        )}
         
         <div className="nav-pill">
           {navItems.map((item) => {

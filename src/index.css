@@ -4824,3 +4824,123 @@ body.light-mode .scroll-wheel {
     height: 300px;
   }
 }
+/* =========================================
+   LOADING SCREEN - LETTERS ON TOP
+   ========================================= */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.loading-letters {
+  display: flex;
+  gap: 8px;
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: white;
+  letter-spacing: 8px;
+}
+
+.loading-letters .letter {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+}
+
+.loading-letters .letter.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.loading-bar-track {
+  width: 400px;
+  max-width: 80%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.loading-bar-fill {
+  height: 100%;
+  background: white;
+  border-radius: 2px;
+  transition: width 0.05s linear;
+}
+
+/* =========================================
+   NAVBAR - HIDE LOGO ON SCROLL
+   ========================================= */
+.floating-nav {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 2rem;
+}
+
+.floating-nav.scrolled .nav-logo {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.floating-nav:not(.scrolled) .nav-logo {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+/* =========================================
+   HERO - ROTATING BACKGROUND IMAGES
+   ========================================= */
+.hero-bg-images {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.hero-bg-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+  transform: scale(1);
+}
+
+.hero-bg-image.active {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* Remove old video styles if not needed elsewhere */
+.hero-video-container,
+.hero-video {
+  display: none;
+}
+
+/* Keep the overlay */
+.hero-video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(15, 23, 42, 0.75) 100%);
+  z-index: 1;
+}
+
+body.light-mode .hero-video-overlay {
+  background: linear-gradient(135deg, rgba(240, 244, 248, 0.9) 0%, rgba(240, 244, 248, 0.8) 100%);
+}
+
+/* Rest of hero styles remain the same */
